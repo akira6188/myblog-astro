@@ -1,0 +1,30 @@
+---
+import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = 'About Me';
+const identity = {
+  firstName: 'sakura',
+  lastName: 'saku',
+  country: 'Japan',
+  hobbies: ['programing', 'game', 'movie'],
+};
+
+const isFree = 'false';
+---
+
+<!-- タグのかえしのところに属性を追加 -->
+<BaseLayout pageTitle={pageTitle}>
+  <h1>{pageTitle}</h1>
+  <p>このブログはAstroの練習サイトです</p>
+  <dl>
+    <dt>名前</dt>
+    <dd>{identity.firstName} {identity.lastName}</dd>
+    <dt>国</dt>
+    <dd>{identity.country}</dd>
+    <dt>趣味</dt>
+    <dd>{identity.hobbies.map((hobbie) => <p>{hobbie}</p>)}</dd>
+  </dl>
+
+  {isFree ? <p>お仕事募集中です</p> : <p>現在多忙中です</p>}
+</BaseLayout>
